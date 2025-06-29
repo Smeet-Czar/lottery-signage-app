@@ -1,0 +1,7 @@
+# Don't upload images or local DB to GitHub
+ticket_images/
+data/*.sqlite3
+__pycache__/
+.env
+venv/
+*.pyc
