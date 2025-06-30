@@ -17,8 +17,11 @@ service = Service(executable_path=chromeDriverPath)
 # ✅ Optional: Set Chrome to headless mode
 options = Options()
 #options.add_argument("--headless")
-options.add_argument("--window-size=1920,1080")
+#options.add_argument("--window-size=1920,1080")
 
 # ✅ Use service and options in Chrome() constructor
 driver = webdriver.Chrome(service=service, options=options)
+
+#driver.get("https://floridalottery.com/games/scratch-offs")
+
 
