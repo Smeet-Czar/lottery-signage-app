@@ -5,3 +5,4 @@ __pycache__/
 .env
 venv/
 *.pyc
+chromedriver-win64.zip
