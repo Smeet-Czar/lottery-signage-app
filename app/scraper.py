@@ -22,6 +22,6 @@ options = Options()
 # ✅ Use service and options in Chrome() constructor
 driver = webdriver.Chrome(service=service, options=options)
 
-#driver.get("https://floridalottery.com/games/scratch-offs")
+driver.get("https://floridalottery.com/games/scratch-offs")
 
 
