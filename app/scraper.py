@@ -16,19 +16,37 @@ service = Service(executable_path=chromeDriverPath)
 
 # ✅ Optional: Set Chrome to headless mode
 options = Options()
+options.add_experimental_option("detach", True)
 #options.add_argument("--headless")
 #options.add_argument("--window-size=1920,1080")
 
 # ✅ Use service and options in Chrome() constructor
 driver = webdriver.Chrome(service=service, options=options)
 
-driver.get("https://floridalottery.com/games/scratch-offs")
+driver.get("https://www.flalottery.com/scratch-offs")
+time.sleep(2)  # Wait for page to fully load
 
-# Keep clicking "View More" until it's gone
+# <span class="cmp-button__text">View More</span>
+# //*[@id="scratchoffsearch-6c58e32c1d"]/div[2]/button
+# <button class="cmp-button spacing-t-none spacing-b-none min-w-[12rem] justify-center bg-beige-200 text-black" type="button"><!----><span class="cmp-button__text">View More</span></button>
 while True:
     try:
-        view_more = driver.find_element(By.XPATH, "//*[@id="scratchoffsearch-6c58e32c1d"]/div[2]/button/span")
+        view_more = driver.find_element(By.XPATH, "//button[.//span[text()='View More']]")  
+        time.sleep(2)
         view_more.click()
-        time.sleep(2)  # Wait for content to load
+        print("Clicked 'View More'")
+        time.sleep(2)
     except:
-        break  # No more buttons
+        break
+    
+
+# (Get names of lottery present in current page)
+elements = driver.find_elements(By.TAG_NAME, "li")
+for el in elements:
+    try:
+        name = el.find_element(By.CLASS_NAME, "inline-block.focus-pink").text
+        print(name)
+    except:
+        continue
+
+
