@@ -24,4 +24,11 @@ driver = webdriver.Chrome(service=service, options=options)
 
 driver.get("https://floridalottery.com/games/scratch-offs")
 
-
+# Keep clicking "View More" until it's gone
+while True:
+    try:
+        view_more = driver.find_element(By.XPATH, "//*[@id="scratchoffsearch-6c58e32c1d"]/div[2]/button/span")
+        view_more.click()
+        time.sleep(2)  # Wait for content to load
+    except:
+        break  # No more buttons
